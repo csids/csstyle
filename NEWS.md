@@ -1,8 +1,32 @@
 # Version 2025.1.31
 
-- Updated LICENSE year to 2025
-- Removed non-portable .DS_Store files for CRAN compliance
-- Package preparation for CRAN submission
+## Major Features
+
+* **Dual formatting system**: Added complete journal formatting functions alongside existing Norwegian formatting
+* **Journal number formatting**: 15 new functions (`format_num_as_journal_*`) with international standards (comma thousands, decimal point, "NA" for missing)
+* **Journal date formatting**: 3 new functions using ISO 8601 standards (`format_date_as_journal`, `format_datetime_as_journal`, `format_datetime_as_journal_file`)
+* **Comprehensive test suite**: Added 79 tests across 5 test files covering all formatting functions
+* **Complete vignette**: New vignette with side-by-side comparisons of Norwegian vs journal formatting
+
+## Documentation
+
+* **Reorganized _pkgdown.yml**: Functions now grouped by user intent (Visualization, Norwegian formatting, Journal formatting) instead of technical implementation
+* **Updated DESCRIPTION**: Comprehensive description reflecting dual formatting capabilities
+* **Enhanced README.md**: Updated with key features and dual formatting system overview
+* **Function examples**: Added runnable examples to all 37+ exported functions
+* **Internal documentation**: Added @noRd to non-exported helper functions
+
+## Repository Cleanup
+
+* **Removed outdated files**: Cleaned up 11 development files and old vignette directories
+* **Non-portable files**: Removed .DS_Store files for CRAN compliance
+* **Updated LICENSE**: Year updated to 2025
+* **Created CLAUDE.md**: Added development guidance and lessons learned
+
+## Bug Fixes
+
+* **Fixed version format**: Removed leading zeroes (2025.01.31 → 2025.1.31)
+* **Enhanced documentation**: Fixed missing documentation and improved function organization
 
 # Version 2023.12.22
 
