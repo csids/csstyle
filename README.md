@@ -5,6 +5,7 @@
 [csstyle](https://www.csids.no/csstyle/) is a comprehensive styling system for consistent visual outputs using CSIDS guidelines. It provides ggplot2 themes, color palettes, and dual formatting functions to standardize graphs, tables, and reports.
 
 **Key Features:**
+
 - **ggplot2 themes** with CSIDS styling and configurable options
 - **Color palettes** with hierarchical system (primary, warning, posneg)
 - **Dual formatting system**:
