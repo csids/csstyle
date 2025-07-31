@@ -10,7 +10,7 @@
 
 ## Documentation
 
-* **Reorganized _pkgdown.yml**: Functions now grouped by user intent (Visualization, Norwegian formatting, Journal formatting) instead of technical implementation
+* **Reorganized pkgdown.yml**: Functions now grouped by user intent (Visualization, Norwegian formatting, Journal formatting) instead of technical implementation
 * **Updated DESCRIPTION**: Comprehensive description reflecting dual formatting capabilities
 * **Enhanced README.md**: Updated with key features and dual formatting system overview
 * **Function examples**: Added runnable examples to all 37+ exported functions
