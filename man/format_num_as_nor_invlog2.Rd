@@ -3,25 +3,43 @@
 \name{format_num_as_nor_invlog2_1}
 \alias{format_num_as_nor_invlog2_1}
 \alias{format_num_as_nor_invlog2_2}
-\title{Formats as a norwegian number with 1 digit on log-2 scale.
-Useful for scale labels}
+\title{Format numbers on inverse log-2 scale with Norwegian conventions (1 digit)}
 \usage{
 format_num_as_nor_invlog2_1(x)
 
 format_num_as_nor_invlog2_2(x)
 }
 \arguments{
-\item{x}{value}
+\item{x}{Numeric vector (log-2 scale values)}
 }
 \value{
-Character vector
+Character vector with Norwegian-formatted numbers
 
-Character vector
+Character vector with Norwegian-formatted numbers
 }
 \description{
-Formats as a norwegian number with 1 digit on log-2 scale.
-Useful for scale labels
+Formats values by applying 2^x transformation then formatting with Norwegian conventions and 1 decimal place.
 
-Formats as a norwegian number with 2 digits on log-2 scale.
-Useful for scale labels
+Formats values by applying 2^x transformation then formatting with Norwegian conventions and 2 decimal places.
 }
+\examples{
+# Transform log2 values back to original scale
+format_num_as_nor_invlog2_1(c(1, 2, 3))  # 2^1, 2^2, 2^3
+format_num_as_nor_invlog2_2(c(1, 2, 3))
+}
+\seealso{
+Other csstyle_formatters: 
+\code{\link{format_num_as_nor_invlog10_1}()},
+\code{\link{format_num_as_nor_invloge_1}()},
+\code{\link{format_num_as_nor_num_0}()},
+\code{\link{format_num_as_nor_per100k_0}()},
+\code{\link{format_num_as_nor_perc_0}()}
+
+Other csstyle_formatters: 
+\code{\link{format_num_as_nor_invlog10_1}()},
+\code{\link{format_num_as_nor_invloge_1}()},
+\code{\link{format_num_as_nor_num_0}()},
+\code{\link{format_num_as_nor_per100k_0}()},
+\code{\link{format_num_as_nor_perc_0}()}
+}
+\concept{csstyle_formatters}

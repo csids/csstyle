@@ -7,5 +7,12 @@ vignettes3
 ^doc$
 ^Meta$
 dev
-@eaDir
+^@eaDir$
 _pkgdown.yml
+CLAUDE.md
+^\.git$
+^\.gitignore$
+^\.Rhistory$
+^\.claude$
+^\.\.Rcheck$
+^.*\.DS_Store$

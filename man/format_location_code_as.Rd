@@ -3,7 +3,7 @@
 \name{format_location_code_as_factor}
 \alias{format_location_code_as_factor}
 \alias{format_location_code_as_character}
-\title{Makes a factor with a label from a vector of location codes}
+\title{Convert Norwegian location codes to factor with readable labels}
 \usage{
 format_location_code_as_factor(
   x,
@@ -22,23 +22,32 @@ format_location_code_as_character(
 )
 }
 \arguments{
-\item{x}{A vector of location codes}
+\item{x}{Character vector of Norwegian location codes}
 
-\item{label}{The label you want the elements in the character to have}
+\item{label}{Column name from reference data to use for labels (default: uses global setting)}
 
-\item{label_if_not_unique}{The label of elements that are not unique}
+\item{label_if_not_unique}{Column name to use when location names are not unique (default: uses global setting)}
 
-\item{reference}{Where you get your data}
+\item{reference}{Data.table with location reference data (default: csdata::nor_locations_names())}
 
-\item{direction}{-1 is reverse}
+\item{direction}{Integer: 1 for normal order, -1 for reversed order (default: 1)}
 }
 \value{
-Factor vector
+Factor vector with Norwegian location names as labels
 
-Character vector
+Character vector with Norwegian location names
 }
 \description{
-Makes a factor with a label from a vector of location codes
+Converts Norwegian location codes (municipality/county codes) to factors with human-readable Norwegian location names.
 
-Makes a character from a vector of location codes
+Converts Norwegian location codes to character vector with human-readable Norwegian location names.
 }
+\examples{
+\donttest{
+# Convert location codes to factors (requires csdata package)
+location_codes <- c("03", "11", "15")
+format_location_code_as_factor(location_codes)
+format_location_code_as_character(location_codes)
+}
+}
+\concept{csstyle_location_formatters}

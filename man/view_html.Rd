@@ -2,16 +2,23 @@
 % Please edit documentation in R/view_html.r
 \name{view_html}
 \alias{view_html}
-\title{View HTML in the rstudio view}
+\title{View HTML in the RStudio viewer}
 \usage{
 view_html(x)
 }
 \arguments{
-\item{x}{html}
+\item{x}{Character string containing HTML content to display}
 }
 \value{
-Nothing
+Nothing (called for side effects).
 }
 \description{
-View HTML in the rstudio view
+Opens HTML content in the RStudio viewer pane.
+}
+\examples{
+# View simple HTML content
+html_content <- "<h1>Hello World</h1><p>This is a test.</p>"
+\dontrun{
+view_html(html_content)
+}
 }

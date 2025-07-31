@@ -17,7 +17,8 @@ An easy way to print github code
 }
 \examples{
 \dontrun{
-x <- as_github_code("https://github.com/x/y/blob/main/file.txt")
-print(x, lines = 3:5)
+# Example usage (requires internet connection)
+x <- as_github_code("https://github.com/csids/csstyle/blob/main/README.md")
+print(x, lines = 1:3)
 }
 }

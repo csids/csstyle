@@ -4,7 +4,7 @@
 \alias{format_date_as_nor}
 \alias{format_datetime_as_nor}
 \alias{format_datetime_as_file}
-\title{Format date in the Norwegian format}
+\title{Format date and datetime using Norwegian conventions}
 \usage{
 format_date_as_nor(x = lubridate::today(), format = "\%d.\%m.\%Y")
 
@@ -16,21 +16,23 @@ format_datetime_as_nor(
 format_datetime_as_file(x = lubridate::now(), format = "\%Y_\%m_\%d_\%H\%M\%S")
 }
 \arguments{
-\item{x}{Datetime}
+\item{x}{Date or datetime object to format}
 
-\item{format}{The desired format}
+\item{format}{Character string specifying the desired format}
 }
 \value{
-A character vector
-
-A character vector
-
-A character vector
+Character vector with formatted dates/datetimes
 }
 \description{
-Format date in the Norwegian format
-
-Format datetime in the Norwegian format
-
-Format datetime in a file format
+Functions for formatting dates and datetimes using Norwegian conventions or for safe filename use.
 }
+\examples{
+# Format current date/time using Norwegian conventions
+format_date_as_nor()
+format_datetime_as_nor()
+
+# Format specific dates
+format_date_as_nor(as.Date("2023-12-25"))
+format_datetime_as_file(as.POSIXct("2023-12-25 14:30:00"))
+}
+\concept{csstyle_date_formatters}

@@ -1,16 +1,31 @@
-#' ggplot2 theme
-#' @param base_size a
-#' @param base_family a
-#' @param base_line_size a
-#' @param base_rect_size a
-#' @param legend_position a
-#' @param x_axis_vertical FALSE
-#' @param panel_on_top a
-#' @param panel.grid.major.x Set to FALSE
-#' @param panel.grid.minor.x Set to FALSE
-#' @param panel.grid.major.y Set to FALSE
-#' @param panel.grid.minor.y Set to FALSE
-#' @returns ggplot2 theme
+#' CSIDS ggplot2 theme for consistent styling
+#' 
+#' @description Custom ggplot2 theme following CSIDS visual guidelines with configurable grid lines and formatting.
+#' @param base_size Base font size in points (default: 16)
+#' @param base_family Base font family (default: "")
+#' @param base_line_size Base line size relative to base_size (default: base_size/22)
+#' @param base_rect_size Base rectangle size relative to base_size (default: base_size/22)
+#' @param legend_position Position of legend: "right", "left", "top", "bottom", or "none" (default: "right")
+#' @param x_axis_vertical Logical: should x-axis labels be vertical? (default: FALSE)
+#' @param panel_on_top Logical: should panel be drawn on top of data? (default: TRUE)
+#' @param panel.grid.major.x Logical or element: major vertical grid lines (default: FALSE)
+#' @param panel.grid.minor.x Logical or element: minor vertical grid lines (default: FALSE)
+#' @param panel.grid.major.y Logical or element: major horizontal grid lines (default: TRUE)
+#' @param panel.grid.minor.y Logical or element: minor horizontal grid lines (default: TRUE)
+#' @returns Complete ggplot2 theme object
+#' @examples
+#' library(ggplot2)
+#' 
+#' # Basic usage with default settings
+#' ggplot(mtcars, aes(x = mpg, y = hp)) + 
+#'   geom_point() + 
+#'   theme_cs()
+#'   
+#' # With custom settings
+#' ggplot(mtcars, aes(x = mpg, y = hp)) + 
+#'   geom_point() + 
+#'   theme_cs(legend_position = "bottom", x_axis_vertical = TRUE)
+#' @family csstyle_ggplot2
 #' @rdname theme
 #' @export
 theme_cs <- function(
@@ -110,6 +125,13 @@ theme_cs <- function(
 #' Sets the x axis to be vertical
 #' @import ggplot2
 #' @returns ggplot2 theme component
+#' @examples
+#' library(ggplot2)
+#' 
+#' # Add vertical x-axis labels to any plot
+#' ggplot(mtcars, aes(x = rownames(mtcars), y = mpg)) + 
+#'   geom_col() + 
+#'   set_x_axis_vertical()
 #' @rdname theme
 #' @export
 set_x_axis_vertical <- function() {

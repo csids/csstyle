@@ -7,13 +7,13 @@
 every_nth(n)
 }
 \arguments{
-\item{n}{nth discrete value}
+\item{n}{Integer specifying which nth value to return (e.g., n=2 returns every 2nd value)}
 }
 \value{
 A function that returns every nth discrete value.
 }
 \description{
-Returns every nth discrete value
+Creates a function that returns every nth element from a vector, useful for axis breaks in ggplot2.
 }
 \examples{
 every_nth(4)(c(1:10))
@@ -21,3 +21,10 @@ every_nth(4)(c(1:10))
 scale_x_discrete(NULL, breaks = every_nth(n = 2))
 }
 }
+\seealso{
+Other csstyle_utilities: 
+\code{\link{colors}},
+\code{\link{display_all_palettes}()},
+\code{\link{set_global}()}
+}
+\concept{csstyle_utilities}

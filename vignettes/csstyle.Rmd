@@ -1,0 +1,230 @@
+---
+title: "Introduction to csstyle"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to csstyle}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(csstyle)
+library(ggplot2)
+```
+
+## Overview
+
+The `csstyle` package provides a system for standardizing outputs such as graphs, tables, and reports using CSIDS visual guidelines. Rather than offering infinite customization options, `csstyle` focuses on producing a limited set of outputs that consistently look the same.
+
+## Key Features
+
+- **Consistent ggplot2 themes** with CSIDS styling
+- **Predefined color palettes** for professional visualizations  
+- **Norwegian number formatting** conventions
+- **Utility functions** for common tasks
+
+## Using CSIDS Themes
+
+The main theme function `theme_cs()` provides a clean, professional appearance:
+
+```{r theme-example}
+# Basic scatter plot with CSIDS theme
+ggplot(mtcars, aes(x = mpg, y = hp)) +
+  geom_point() +
+  theme_cs() +
+  labs(
+    title = "Engine Power vs Fuel Efficiency",
+    x = "Miles per Gallon",
+    y = "Horsepower"
+  )
+```
+
+You can customize the theme with various options:
+
+```{r theme-custom}
+# Theme with bottom legend and vertical x-axis labels
+ggplot(mtcars, aes(x = factor(cyl), y = mpg, fill = factor(cyl))) +
+  geom_boxplot() +
+  theme_cs(legend_position = "bottom", x_axis_vertical = TRUE) +
+  labs(title = "MPG by Number of Cylinders", fill = "Cylinders")
+```
+
+## Color Palettes
+
+The package includes several predefined color palettes:
+
+```{r colors}
+# View available colors
+head(colors$named_colors)
+
+# Display all palettes
+display_all_palettes()
+```
+
+Use the color scales in your plots:
+
+```{r color-scales}
+# Using the primary color palette
+ggplot(mtcars, aes(x = mpg, y = hp, color = factor(cyl))) +
+  geom_point(size = 3) +
+  scale_color_cs(palette = "primary") +
+  theme_cs() +
+  labs(color = "Cylinders")
+```
+
+```{r fill-scales}
+# Using the warning palette for fills
+ggplot(mtcars, aes(x = factor(cyl), fill = factor(cyl))) +
+  geom_bar() +
+  scale_fill_cs(palette = "warning") +
+  theme_cs() +
+  labs(title = "Car Count by Cylinders", fill = "Cylinders")
+```
+
+## Number Formatting
+
+The package provides Norwegian number formatting conventions:
+
+```{r formatting}
+# Format numbers with Norwegian conventions
+numbers <- c(1234.56, 9876.54, 123.45, NA)
+
+# Basic number formatting (0, 1, 2 decimal places)
+format_num_as_nor_num_0(numbers)
+format_num_as_nor_num_1(numbers)
+format_num_as_nor_num_2(numbers)
+
+# Percentage formatting
+percentages <- c(12.34, 56.78, 90.12)
+format_num_as_nor_perc_1(percentages)
+
+# Per 100k population rates
+rates <- c(123.45, 678.90)
+format_num_as_nor_per100k_1(rates)
+```
+
+## Date Formatting
+
+Format dates using Norwegian conventions:
+
+```{r dates}
+# Current date
+format_date_as_nor()
+
+# Specific dates
+test_date <- as.Date("2023-12-25")
+format_date_as_nor(test_date)
+
+# Datetime formatting
+test_datetime <- as.POSIXct("2023-12-25 14:30:00")
+format_datetime_as_nor(test_datetime)
+
+# Filename-safe datetime
+format_datetime_as_file(test_datetime)
+```
+
+## Journal Formatting
+
+For academic publications, the package also provides journal formatting functions that use international conventions (comma thousands separator, decimal point, ISO 8601 dates):
+
+### Number Formatting Comparison
+
+```{r journal-numbers}
+# Compare Norwegian vs Journal formatting
+numbers <- c(1234.56, 9876.54, NA)
+
+# Norwegian format (space thousands, comma decimal, "IK" for NA)
+format_num_as_nor_num_1(numbers)
+
+# Journal format (comma thousands, decimal point, "NA" for NA)
+format_num_as_journal_num_1(numbers)
+
+# Percentage comparison
+percentages <- c(12.34, 56.78)
+
+# Norwegian: "12,3 %" vs Journal: "12.3%"
+format_num_as_nor_perc_1(percentages)
+format_num_as_journal_perc_1(percentages)
+
+# Per 100k comparison  
+rates <- c(123.45, 678.90)
+
+# Norwegian: "123,5 /100k" vs Journal: "123.5/100k"
+format_num_as_nor_per100k_1(rates)
+format_num_as_journal_per100k_1(rates)
+```
+
+### Date Formatting Comparison
+
+```{r journal-dates}
+test_date <- as.Date("2023-12-25")
+test_datetime <- as.POSIXct("2023-12-25 14:30:00")
+
+# Norwegian format: "25.12.2023"
+format_date_as_nor(test_date)
+
+# Journal format (ISO 8601): "2023-12-25"
+format_date_as_journal(test_date)
+
+# Datetime comparison
+format_datetime_as_nor(test_datetime)     # "25.12.2023 kl. 14:00"
+format_datetime_as_journal(test_datetime)  # "2023-12-25 14:30:00"
+```
+
+### Log Scale Transformations
+
+Both Norwegian and journal formats support inverse log transformations:
+
+```{r journal-logs}
+log_values <- c(1, 2, 3)
+
+# Log2 transformations (2^1, 2^2, 2^3 = 2, 4, 8)
+format_num_as_nor_invlog2_1(log_values)      # "2,0", "4,0", "8,0"
+format_num_as_journal_invlog2_1(log_values)  # "2.0", "4.0", "8.0"
+
+# Log10 transformations (10^1, 10^2, 10^3 = 10, 100, 1000)  
+format_num_as_journal_invlog10_1(log_values) # "10.0", "100.0", "1,000.0"
+```
+
+## Utility Functions
+
+### Pretty Breaks
+
+Use `pretty_breaks()` for nicely formatted axis breaks:
+
+```{r pretty-breaks}
+ggplot(mtcars, aes(x = mpg, y = hp)) +
+  geom_point() +
+  scale_y_continuous(breaks = pretty_breaks(n = 4)) +
+  theme_cs()
+```
+
+### Every Nth
+
+Display every nth label on crowded axes:
+
+```{r every-nth}
+ggplot(mtcars, aes(x = rownames(mtcars), y = mpg)) +
+  geom_col() +
+  scale_x_discrete(breaks = every_nth(n = 4)) +
+  theme_cs() +
+  set_x_axis_vertical()
+```
+
+## Conclusion
+
+The `csstyle` package provides a comprehensive set of tools for creating consistent, professional visualizations that follow both Norwegian (CSIDS) and international journal standards. The dual formatting approach ensures that:
+
+- **Norwegian functions** (`*_as_nor`) follow local conventions for domestic reports and presentations
+- **Journal functions** (`*_as_journal`) follow international standards for academic publications  
+
+By providing both options while limiting excessive customization, the package ensures consistent output formatting across different publication contexts.
+
+For more detailed examples and function documentation, use `help(package = "csstyle")` or refer to individual function help pages.

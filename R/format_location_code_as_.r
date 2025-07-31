@@ -1,10 +1,20 @@
-#' Makes a factor with a label from a vector of location codes
-#' @param x A vector of location codes
-#' @param label The label of the elements in the new factor
-#' @param label_if_not_unique The label of elements that are not unique
-#' @param reference Where you get your data
-#' @param direction -1 is reverse
-#' @returns Factor vector
+#' Convert Norwegian location codes to factor with readable labels
+#' 
+#' @description Converts Norwegian location codes (municipality/county codes) to factors with human-readable Norwegian location names.
+#' @param x Character vector of Norwegian location codes
+#' @param label Column name from reference data to use for labels (default: uses global setting)
+#' @param label_if_not_unique Column name to use when location names are not unique (default: uses global setting)
+#' @param reference Data.table with location reference data (default: csdata::nor_locations_names())
+#' @param direction Integer: 1 for normal order, -1 for reversed order (default: 1)
+#' @returns Factor vector with Norwegian location names as labels
+#' @examples
+#' \donttest{
+#' # Convert location codes to factors (requires csdata package)
+#' location_codes <- c("03", "11", "15")
+#' format_location_code_as_factor(location_codes)
+#' format_location_code_as_character(location_codes)
+#' }
+#' @family csstyle_location_formatters
 #' @rdname format_location_code_as
 #' @export
 format_location_code_as_factor <- function(
@@ -48,13 +58,16 @@ format_location_code_as_factor <- function(
   return(retval)
 }
 
-#' Makes a character from a vector of location codes
-#' @param x A vector of location codes
-#' @param label The label you want the elements in the character to have
-#' @param label_if_not_unique The label of elements that are not unique
-#' @param reference Where you get your data
-#' @param direction -1 is reverse
-#' @returns Character vector
+#' Convert Norwegian location codes to character with readable labels
+#' 
+#' @description Converts Norwegian location codes to character vector with human-readable Norwegian location names.
+#' @param x Character vector of Norwegian location codes
+#' @param label Column name from reference data to use for labels (default: uses global setting)
+#' @param label_if_not_unique Column name to use when location names are not unique (default: uses global setting)
+#' @param reference Data.table with location reference data (default: csdata::nor_locations_names())
+#' @param direction Integer: 1 for normal order, -1 for reversed order (default: 1)
+#' @returns Character vector with Norwegian location names
+#' @family csstyle_location_formatters
 #' @rdname format_location_code_as
 #' @export
 format_location_code_as_character <- function(
@@ -66,7 +79,7 @@ format_location_code_as_character <- function(
 ){
 
   if(is.null(label)) label <- global$location_code_to_factor_label
-  if(is.null(label_if_not_unique)) label <- global$location_code_to_factor_label_if_not_unique
+  if(is.null(label_if_not_unique)) label_if_not_unique <- global$location_code_to_factor_label_if_not_unique
 
   retval <- format_location_code_as_factor(
     x = x,

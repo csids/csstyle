@@ -3,24 +3,24 @@
 \name{format_cstidy_age_as_factor}
 \alias{format_cstidy_age_as_factor}
 \alias{format_cstidy_age_as_character}
-\title{Formats a cstidy age as a factor}
+\title{Format cstidy age codes as factor with Norwegian text}
 \usage{
 format_cstidy_age_as_factor(x)
 
 format_cstidy_age_as_character(x)
 }
 \arguments{
-\item{x}{a string (or multiple strings) with an age or an age group}
+\item{x}{Character vector containing age codes or age group codes}
 }
 \value{
-A vector of factors
+Factor vector with Norwegian age labels (e.g., "9 år", "5-14 år")
 
-A vector of characters
+Character vector with Norwegian age labels (e.g., "9 år", "5-14 år")
 }
 \description{
-Formats a cstidy age as a factor
+Converts age codes (e.g., "009", "005_014") to readable Norwegian age labels with proper formatting.
 
-Formats a cstidy age as a character
+Converts age codes to readable Norwegian age labels and returns as character vector.
 }
 \examples{
 csstyle::format_cstidy_age_as_factor("009")
@@ -28,3 +28,4 @@ csstyle::format_cstidy_age_as_factor("005-014")
 csstyle::format_cstidy_age_as_character("009")
 csstyle::format_cstidy_age_as_character("005-014")
 }
+\concept{csstyle_age_formatters}

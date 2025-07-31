@@ -1,9 +1,12 @@
-#' Formats a cstidy age as a factor
-#' @param x a string (or multiple strings) with an age or an age group
+#' Format cstidy age codes as factor with Norwegian text
+#' 
+#' @description Converts age codes (e.g., "009", "005_014") to readable Norwegian age labels with proper formatting.
+#' @param x Character vector containing age codes or age group codes
 #' @examples
 #' csstyle::format_cstidy_age_as_factor("009")
 #' csstyle::format_cstidy_age_as_factor("005-014")
-#' @returns A vector of factors
+#' @returns Factor vector with Norwegian age labels (e.g., "9 år", "5-14 år")
+#' @family csstyle_age_formatters
 #' @rdname format_cstidy_age_as
 #' @export
 format_cstidy_age_as_factor <- function(x){
@@ -27,12 +30,15 @@ format_cstidy_age_as_factor <- function(x){
   return(factor(x, levels = age_levels, labels = age_labels))
 }
 
-#' Formats a cstidy age as a character
-#' @param x a string (or multiple strings) with an age or an age group
+#' Format cstidy age codes as character with Norwegian text
+#' 
+#' @description Converts age codes to readable Norwegian age labels and returns as character vector.
+#' @param x Character vector containing age codes or age group codes
 #' @examples
 #' csstyle::format_cstidy_age_as_character("009")
 #' csstyle::format_cstidy_age_as_character("005-014")
-#' @returns A vector of characters
+#' @returns Character vector with Norwegian age labels (e.g., "9 år", "5-14 år")
+#' @family csstyle_age_formatters
 #' @rdname format_cstidy_age_as
 #' @export
 format_cstidy_age_as_character <- function(x){

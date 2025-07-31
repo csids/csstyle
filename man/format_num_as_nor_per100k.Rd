@@ -4,8 +4,7 @@
 \alias{format_num_as_nor_per100k_0}
 \alias{format_num_as_nor_per100k_1}
 \alias{format_num_as_nor_per100k_2}
-\title{Formats as a norwegian number with 0 digits and the suffix " /100k".
-Useful for scale labels}
+\title{Format numbers per 100k with Norwegian conventions (0 digits)}
 \usage{
 format_num_as_nor_per100k_0(x)
 
@@ -14,22 +13,48 @@ format_num_as_nor_per100k_1(x)
 format_num_as_nor_per100k_2(x)
 }
 \arguments{
-\item{x}{value}
+\item{x}{Numeric vector to format}
 }
 \value{
-Character vector
+Character vector with Norwegian-formatted numbers and "/100k" suffix
 
-Character vector
+Character vector with Norwegian-formatted numbers and "/100k" suffix
 
-Character vector
+Character vector with Norwegian-formatted numbers and "/100k" suffix
 }
 \description{
-Formats as a norwegian number with 0 digits and the suffix " /100k".
-Useful for scale labels
+Formats numeric values as "per 100k" rates using Norwegian number conventions with 0 decimal places.
 
-Formats as a norwegian number with 1 digits and the suffix " /100k"
-Useful for scale labels
+Formats numeric values as "per 100k" rates using Norwegian number conventions with 1 decimal place.
 
-Formats as a norwegian number with 2 digits and the suffix " /100k"
-Useful for scale labels
+Formats numeric values as "per 100k" rates using Norwegian number conventions with 2 decimal places.
 }
+\examples{
+# Format rates per 100k population
+format_num_as_nor_per100k_0(c(123.45, 678.90, NA))
+format_num_as_nor_per100k_1(c(123.45, 678.90, NA))
+format_num_as_nor_per100k_2(c(123.45, 678.90, NA))
+}
+\seealso{
+Other csstyle_formatters: 
+\code{\link{format_num_as_nor_invlog10_1}()},
+\code{\link{format_num_as_nor_invlog2_1}()},
+\code{\link{format_num_as_nor_invloge_1}()},
+\code{\link{format_num_as_nor_num_0}()},
+\code{\link{format_num_as_nor_perc_0}()}
+
+Other csstyle_formatters: 
+\code{\link{format_num_as_nor_invlog10_1}()},
+\code{\link{format_num_as_nor_invlog2_1}()},
+\code{\link{format_num_as_nor_invloge_1}()},
+\code{\link{format_num_as_nor_num_0}()},
+\code{\link{format_num_as_nor_perc_0}()}
+
+Other csstyle_formatters: 
+\code{\link{format_num_as_nor_invlog10_1}()},
+\code{\link{format_num_as_nor_invlog2_1}()},
+\code{\link{format_num_as_nor_invloge_1}()},
+\code{\link{format_num_as_nor_num_0}()},
+\code{\link{format_num_as_nor_perc_0}()}
+}
+\concept{csstyle_formatters}

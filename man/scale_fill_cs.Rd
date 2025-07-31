@@ -2,19 +2,39 @@
 % Please edit documentation in R/2_palettes.R
 \name{scale_fill_cs}
 \alias{scale_fill_cs}
-\title{Main colour extractor
-https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2}
+\title{ggplot2 fill scale using CSIDS color palettes}
 \usage{
 scale_fill_cs(..., palette = "primary", direction = 1)
 }
 \arguments{
-\item{...}{a}
+\item{...}{Additional arguments passed to ggplot2::discrete_scale()}
 
-\item{palette}{a}
+\item{palette}{Name of color palette to use (default: "primary"). Options: "primary", "warning", "posneg"}
 
-\item{direction}{a}
+\item{direction}{Direction of color palette: 1 for normal, -1 for reversed (default: 1)}
+}
+\value{
+A ggplot2 discrete fill scale
 }
 \description{
-Main colour extractor
-https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
+Creates a discrete fill scale for ggplot2 using predefined CSIDS color palettes.
 }
+\examples{
+library(ggplot2)
+
+# Default primary fill scale
+ggplot(mtcars, aes(x = factor(cyl), fill = factor(cyl))) + 
+  geom_bar() + 
+  scale_fill_cs()
+  
+# Use posneg palette
+ggplot(mtcars, aes(x = factor(vs), fill = factor(vs))) + 
+  geom_bar() + 
+  scale_fill_cs(palette = "posneg")
+}
+\seealso{
+Other csstyle_ggplot2: 
+\code{\link{scale_color_cs}()},
+\code{\link{theme_cs}()}
+}
+\concept{csstyle_ggplot2}

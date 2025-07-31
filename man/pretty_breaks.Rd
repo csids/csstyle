@@ -7,15 +7,23 @@
 pretty_breaks(n = 5, formatting_fn = csstyle::format_num_as_nor_num_0, ...)
 }
 \arguments{
-\item{n}{a}
+\item{n}{Number of desired breaks (default: 5)}
 
-\item{formatting_fn}{Formatting function}
+\item{formatting_fn}{Formatting function to apply to break labels (default: Norwegian number formatting)}
 
-\item{...}{dots}
+\item{...}{Additional arguments passed to pretty()}
 }
 \value{
 A function that can be used for breaks on graphing.
 }
 \description{
-Pretty breaks
+Creates a function for generating pretty axis breaks with Norwegian number formatting.
+}
+\examples{
+library(ggplot2)
+
+# Use pretty breaks with default formatting
+ggplot(mtcars, aes(x = mpg, y = hp)) + 
+  geom_point() + 
+  scale_x_continuous(breaks = pretty_breaks(n = 4))
 }

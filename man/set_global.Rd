@@ -2,7 +2,7 @@
 % Please edit documentation in R/1_environments.r
 \name{set_global}
 \alias{set_global}
-\title{set_global}
+\title{Set global configuration parameters for location code formatting}
 \usage{
 set_global(
   location_code_to_factor_label = "location_name",
@@ -10,10 +10,30 @@ set_global(
 )
 }
 \arguments{
-\item{location_code_to_factor_label}{The label}
+\item{location_code_to_factor_label}{Column name to use for location labels (default: "location_name")}
 
-\item{location_code_to_factor_label_if_not_unique}{The label if something is not unique with the first laben}
+\item{location_code_to_factor_label_if_not_unique}{Column name to use when location names are not unique (default: "location_name_description_nb")}
+}
+\value{
+NULL (invisibly) - function called for side effects
 }
 \description{
-set_global
+This function sets global parameters that control how location codes are formatted throughout the package.
 }
+\examples{
+# Set global location formatting preferences
+set_global(
+  location_code_to_factor_label = "custom_name",
+  location_code_to_factor_label_if_not_unique = "custom_description"
+)
+
+# Reset to defaults
+set_global()
+}
+\seealso{
+Other csstyle_utilities: 
+\code{\link{colors}},
+\code{\link{display_all_palettes}()},
+\code{\link{every_nth}()}
+}
+\concept{csstyle_utilities}

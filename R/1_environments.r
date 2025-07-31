@@ -2,9 +2,22 @@ global <- new.env()
 global$location_code_to_factor_label <- "location_name"
 global$location_code_to_factor_label_if_not_unique <- "location_name_description_nb"
 
-#' set_global
-#' @param location_code_to_factor_label The label
-#' @param location_code_to_factor_label_if_not_unique The label if something is not unique with the first laben
+#' Set global configuration parameters for location code formatting
+#' 
+#' @description This function sets global parameters that control how location codes are formatted throughout the package.
+#' @param location_code_to_factor_label Column name to use for location labels (default: "location_name")
+#' @param location_code_to_factor_label_if_not_unique Column name to use when location names are not unique (default: "location_name_description_nb")
+#' @returns NULL (invisibly) - function called for side effects
+#' @examples
+#' # Set global location formatting preferences
+#' set_global(
+#'   location_code_to_factor_label = "custom_name",
+#'   location_code_to_factor_label_if_not_unique = "custom_description"
+#' )
+#' 
+#' # Reset to defaults
+#' set_global()
+#' @family csstyle_utilities
 #' @export
 set_global <- function(
     location_code_to_factor_label = "location_name",
@@ -14,7 +27,20 @@ set_global <- function(
   global$location_code_to_factor_label_if_not_unique <- location_code_to_factor_label_if_not_unique
 }
 
-#' Colors
+#' Color palette definitions for CSIDS styling
+#' 
+#' @description A list containing named colors, base colors, and predefined color palettes for consistent visualization styling.
+#' @returns List with color definitions including named_colors, base color, and palettes
+#' @examples
+#' # Access named colors
+#' colors$named_colors["H1"]
+#' 
+#' # View primary palette
+#' colors$palettes$primary_3
+#' 
+#' # See all available palettes
+#' names(colors$palettes)
+#' @family csstyle_utilities
 #' @export
 colors <- list()
 colors$named_colors <- c(

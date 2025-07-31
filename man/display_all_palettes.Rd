@@ -2,12 +2,24 @@
 % Please edit documentation in R/2_palettes.R
 \name{display_all_palettes}
 \alias{display_all_palettes}
-\title{Main colour extractor
-https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2}
+\title{Display all available color palettes}
 \usage{
 display_all_palettes()
 }
-\description{
-Main colour extractor
-https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
+\value{
+A ggplot2 plot displaying all color palettes
 }
+\description{
+Creates a visualization showing all available CSIDS color palettes with their color codes and names.
+}
+\examples{
+# Display all available color palettes
+display_all_palettes()
+}
+\seealso{
+Other csstyle_utilities: 
+\code{\link{colors}},
+\code{\link{every_nth}()},
+\code{\link{set_global}()}
+}
+\concept{csstyle_utilities}

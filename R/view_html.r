@@ -1,6 +1,13 @@
-#' View HTML in the rstudio view
-#' @param x html
-#' @returns Nothing
+#' View HTML in the RStudio viewer
+#' @description Opens HTML content in the RStudio viewer pane.
+#' @param x Character string containing HTML content to display
+#' @returns Nothing (called for side effects).
+#' @examples
+#' # View simple HTML content
+#' html_content <- "<h1>Hello World</h1><p>This is a test.</p>"
+#' \dontrun{
+#' view_html(html_content)
+#' }
 #' @export
 view_html <- function(x){
   tempDir <- tempfile()

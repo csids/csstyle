@@ -3,14 +3,34 @@
 \docType{data}
 \name{colors}
 \alias{colors}
-\title{Colors}
+\title{Color palette definitions for CSIDS styling}
 \format{
 An object of class \code{list} of length 4.
 }
 \usage{
 colors
 }
-\description{
-Colors
+\value{
+List with color definitions including named_colors, base color, and palettes
 }
+\description{
+A list containing named colors, base colors, and predefined color palettes for consistent visualization styling.
+}
+\examples{
+# Access named colors
+colors$named_colors["H1"]
+
+# View primary palette
+colors$palettes$primary_3
+
+# See all available palettes
+names(colors$palettes)
+}
+\seealso{
+Other csstyle_utilities: 
+\code{\link{display_all_palettes}()},
+\code{\link{every_nth}()},
+\code{\link{set_global}()}
+}
+\concept{csstyle_utilities}
 \keyword{datasets}

@@ -2,19 +2,39 @@
 % Please edit documentation in R/2_palettes.R
 \name{scale_color_cs}
 \alias{scale_color_cs}
-\title{Main colour extractor
-https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2}
+\title{ggplot2 color scale using CSIDS color palettes}
 \usage{
 scale_color_cs(..., palette = "primary", direction = 1)
 }
 \arguments{
-\item{...}{as}
+\item{...}{Additional arguments passed to ggplot2::discrete_scale()}
 
-\item{palette}{as}
+\item{palette}{Name of color palette to use (default: "primary"). Options: "primary", "warning", "posneg"}
 
-\item{direction}{as}
+\item{direction}{Direction of color palette: 1 for normal, -1 for reversed (default: 1)}
+}
+\value{
+A ggplot2 discrete color scale
 }
 \description{
-Main colour extractor
-https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
+Creates a discrete color scale for ggplot2 using predefined CSIDS color palettes.
 }
+\examples{
+library(ggplot2)
+
+# Default primary color scale
+ggplot(mtcars, aes(x = mpg, y = hp, color = factor(cyl))) + 
+  geom_point() + 
+  scale_color_cs()
+  
+# Use warning palette
+ggplot(mtcars, aes(x = mpg, y = hp, color = factor(cyl))) + 
+  geom_point() + 
+  scale_color_cs(palette = "warning")
+}
+\seealso{
+Other csstyle_ggplot2: 
+\code{\link{scale_fill_cs}()},
+\code{\link{theme_cs}()}
+}
+\concept{csstyle_ggplot2}

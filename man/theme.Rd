@@ -3,7 +3,7 @@
 \name{theme_cs}
 \alias{theme_cs}
 \alias{set_x_axis_vertical}
-\title{ggplot2 theme}
+\title{CSIDS ggplot2 theme for consistent styling}
 \usage{
 theme_cs(
   base_size = 16,
@@ -22,35 +22,58 @@ theme_cs(
 set_x_axis_vertical()
 }
 \arguments{
-\item{base_size}{a}
+\item{base_size}{Base font size in points (default: 16)}
 
-\item{base_family}{a}
+\item{base_family}{Base font family (default: "")}
 
-\item{base_line_size}{a}
+\item{base_line_size}{Base line size relative to base_size (default: base_size/22)}
 
-\item{base_rect_size}{a}
+\item{base_rect_size}{Base rectangle size relative to base_size (default: base_size/22)}
 
-\item{legend_position}{a}
+\item{legend_position}{Position of legend: "right", "left", "top", "bottom", or "none" (default: "right")}
 
-\item{x_axis_vertical}{FALSE}
+\item{x_axis_vertical}{Logical: should x-axis labels be vertical? (default: FALSE)}
 
-\item{panel_on_top}{a}
+\item{panel_on_top}{Logical: should panel be drawn on top of data? (default: TRUE)}
 
-\item{panel.grid.major.x}{Set to FALSE}
+\item{panel.grid.major.x}{Logical or element: major vertical grid lines (default: FALSE)}
 
-\item{panel.grid.minor.x}{Set to FALSE}
+\item{panel.grid.minor.x}{Logical or element: minor vertical grid lines (default: FALSE)}
 
-\item{panel.grid.major.y}{Set to FALSE}
+\item{panel.grid.major.y}{Logical or element: major horizontal grid lines (default: TRUE)}
 
-\item{panel.grid.minor.y}{Set to FALSE}
+\item{panel.grid.minor.y}{Logical or element: minor horizontal grid lines (default: TRUE)}
 }
 \value{
-ggplot2 theme
+Complete ggplot2 theme object
 
 ggplot2 theme component
 }
 \description{
-ggplot2 theme
-
-Sets the x axis to be vertical
+Custom ggplot2 theme following CSIDS visual guidelines with configurable grid lines and formatting.
 }
+\examples{
+library(ggplot2)
+
+# Basic usage with default settings
+ggplot(mtcars, aes(x = mpg, y = hp)) + 
+  geom_point() + 
+  theme_cs()
+  
+# With custom settings
+ggplot(mtcars, aes(x = mpg, y = hp)) + 
+  geom_point() + 
+  theme_cs(legend_position = "bottom", x_axis_vertical = TRUE)
+library(ggplot2)
+
+# Add vertical x-axis labels to any plot
+ggplot(mtcars, aes(x = rownames(mtcars), y = mpg)) + 
+  geom_col() + 
+  set_x_axis_vertical()
+}
+\seealso{
+Other csstyle_ggplot2: 
+\code{\link{scale_color_cs}()},
+\code{\link{scale_fill_cs}()}
+}
+\concept{csstyle_ggplot2}
