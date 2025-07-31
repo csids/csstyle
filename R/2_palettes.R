@@ -20,7 +20,7 @@ cs_pal <- function(palette = "primary", direction = 1) {
 }
 
 #' ggplot2 color scale using CSIDS color palettes
-#' 
+#'
 #' @description Creates a discrete color scale for ggplot2 using predefined CSIDS color palettes.
 #' @param palette Name of color palette to use (default: "primary"). Options: "primary", "warning", "posneg"
 #' @param direction Direction of color palette: 1 for normal, -1 for reversed (default: 1)
@@ -28,26 +28,26 @@ cs_pal <- function(palette = "primary", direction = 1) {
 #' @returns A ggplot2 discrete color scale
 #' @examples
 #' library(ggplot2)
-#' 
+#'
 #' # Default primary color scale
-#' ggplot(mtcars, aes(x = mpg, y = hp, color = factor(cyl))) + 
-#'   geom_point() + 
+#' ggplot(mtcars, aes(x = mpg, y = hp, color = factor(cyl))) +
+#'   geom_point() +
 #'   scale_color_cs()
-#'   
+#'
 #' # Use warning palette
-#' ggplot(mtcars, aes(x = mpg, y = hp, color = factor(cyl))) + 
-#'   geom_point() + 
+#' ggplot(mtcars, aes(x = mpg, y = hp, color = factor(cyl))) +
+#'   geom_point() +
 #'   scale_color_cs(palette = "warning")
 #' @family csstyle_ggplot2
 #' @export
 scale_color_cs <- function(..., palette = "primary", direction = 1) {
   pal <- cs_pal(palette = palette, direction = direction)
 
-  ggplot2::discrete_scale("colour", paste0("cs_", palette), palette = pal, ...)
+  ggplot2::discrete_scale("colour", palette = pal, ...)
 }
 
 #' ggplot2 fill scale using CSIDS color palettes
-#' 
+#'
 #' @description Creates a discrete fill scale for ggplot2 using predefined CSIDS color palettes.
 #' @param palette Name of color palette to use (default: "primary"). Options: "primary", "warning", "posneg"
 #' @param direction Direction of color palette: 1 for normal, -1 for reversed (default: 1)
@@ -55,26 +55,26 @@ scale_color_cs <- function(..., palette = "primary", direction = 1) {
 #' @returns A ggplot2 discrete fill scale
 #' @examples
 #' library(ggplot2)
-#' 
+#'
 #' # Default primary fill scale
-#' ggplot(mtcars, aes(x = factor(cyl), fill = factor(cyl))) + 
-#'   geom_bar() + 
+#' ggplot(mtcars, aes(x = factor(cyl), fill = factor(cyl))) +
+#'   geom_bar() +
 #'   scale_fill_cs()
-#'   
+#'
 #' # Use posneg palette
-#' ggplot(mtcars, aes(x = factor(vs), fill = factor(vs))) + 
-#'   geom_bar() + 
+#' ggplot(mtcars, aes(x = factor(vs), fill = factor(vs))) +
+#'   geom_bar() +
 #'   scale_fill_cs(palette = "posneg")
 #' @family csstyle_ggplot2
 #' @export
 scale_fill_cs <- function(..., palette = "primary", direction = 1) {
   pal <- cs_pal(palette = palette, direction = direction)
 
-  ggplot2::discrete_scale("fill", paste0("cs_", palette), palette = pal, ...)
+  ggplot2::discrete_scale("fill", palette = pal, ...)
 }
 
 #' Display all available color palettes
-#' 
+#'
 #' @description Creates a visualization showing all available CSIDS color palettes with their color codes and names.
 #' @returns A ggplot2 plot displaying all color palettes
 #' @examples

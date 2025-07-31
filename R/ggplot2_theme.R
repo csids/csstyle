@@ -1,5 +1,5 @@
 #' CSIDS ggplot2 theme for consistent styling
-#' 
+#'
 #' @description Custom ggplot2 theme following CSIDS visual guidelines with configurable grid lines and formatting.
 #' @param base_size Base font size in points (default: 16)
 #' @param base_family Base font family (default: "")
@@ -15,15 +15,15 @@
 #' @returns Complete ggplot2 theme object
 #' @examples
 #' library(ggplot2)
-#' 
+#'
 #' # Basic usage with default settings
-#' ggplot(mtcars, aes(x = mpg, y = hp)) + 
-#'   geom_point() + 
+#' ggplot(mtcars, aes(x = mpg, y = hp)) +
+#'   geom_point() +
 #'   theme_cs()
-#'   
+#'
 #' # With custom settings
-#' ggplot(mtcars, aes(x = mpg, y = hp)) + 
-#'   geom_point() + 
+#' ggplot(mtcars, aes(x = mpg, y = hp)) +
+#'   geom_point() +
 #'   theme_cs(legend_position = "bottom", x_axis_vertical = TRUE)
 #' @family csstyle_ggplot2
 #' @rdname theme
@@ -44,25 +44,25 @@ theme_cs <- function(
   half_line <- base_size / 2
 
   if(identical(panel.grid.major.x, TRUE)){
-    panel.grid.major.x <- element_line(colour = "black", size = rel(0.1))
+    panel.grid.major.x <- element_line(colour = "black", linewidth = rel(0.1))
   } else if(identical(panel.grid.major.x, FALSE)){
     panel.grid.major.x <- element_blank()
   }
 
   if(identical(panel.grid.minor.x, TRUE)){
-    panel.grid.minor.x <- element_line(colour = "black", size = rel(0.05))
+    panel.grid.minor.x <- element_line(colour = "black", linewidth = rel(0.05))
   } else if(identical(panel.grid.minor.x, FALSE)){
     panel.grid.minor.x <- element_blank()
   }
 
   if(identical(panel.grid.major.y, TRUE)){
-    panel.grid.major.y <- element_line(colour = "black", size = rel(0.1))
+    panel.grid.major.y <- element_line(colour = "black", linewidth = rel(0.1))
   } else if(identical(panel.grid.major.y, FALSE)){
     panel.grid.major.y <- element_blank()
   }
 
   if(identical(panel.grid.minor.y, TRUE)){
-    panel.grid.minor.y <- element_line(colour = "black", size = rel(0.05))
+    panel.grid.minor.y <- element_line(colour = "black", linewidth = rel(0.05))
   } else if(identical(panel.grid.minor.y, FALSE)){
     panel.grid.minor.y <- element_blank()
   }
@@ -75,15 +75,15 @@ theme_cs <- function(
   ) %+replace%
     theme(
       axis.text = element_text(colour = "black", size = rel(0.8)),
-      axis.ticks = element_line(colour = "black", size = rel(0.5)),
+      axis.ticks = element_line(colour = "black", linewidth = rel(0.5)),
       axis.ticks.length = unit(rel(.25), "cm"),
       axis.title.x = element_text(margin = margin(t = base_size), vjust = 1),
       axis.title.y = element_text(angle = 90, margin = margin(r = base_size), vjust = 1),
-      axis.line = element_line(colour = "black", size = rel(1)),
+      axis.line = element_line(colour = "black", linewidth = rel(1)),
       panel.border = element_rect(
         fill = NA,
         colour = NA,
-        size = rel(1)
+        linewidth = rel(1)
       ),
       strip.background = element_rect(colour = "white", fill = "white"),
       panel.background = element_rect(fill = NA, colour = NA),
@@ -127,10 +127,10 @@ theme_cs <- function(
 #' @returns ggplot2 theme component
 #' @examples
 #' library(ggplot2)
-#' 
+#'
 #' # Add vertical x-axis labels to any plot
-#' ggplot(mtcars, aes(x = rownames(mtcars), y = mpg)) + 
-#'   geom_col() + 
+#' ggplot(mtcars, aes(x = rownames(mtcars), y = mpg)) +
+#'   geom_col() +
 #'   set_x_axis_vertical()
 #' @rdname theme
 #' @export
